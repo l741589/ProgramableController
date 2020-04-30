@@ -144,7 +144,7 @@ machine.subscribeKeyPress(1001,function(key){/*do sth. here*/});
 #### getBlocksByName(name)
 根据name查找零件
 * name &lt;string&gt; name, 模块的名字, 等价于返回Block的name属性，大小写不敏感
-* 返回 &lt;[Block](##零件-API)[]&gt; 查找到的零件
+* 返回 &lt;[Block](#零件-API)[]&gt; 查找到的零件
 ```javascript
 var wheels = machine.getBlocksByName('wheel');
 var steerings = machine.getBlocksByName('SteeringBlock');
@@ -155,7 +155,7 @@ getBlocksByName的单数版本，只返回找到的第一个
 #### getBlockByGuid(guid)
 根据guid查找零件，由于guid的唯一性，该api不存在复数版本
 * guid &lt;string&gt; guid, 模块的名字, 等价于返回Block的guid属性，大小写不敏感
-* 返回 &lt;[Block](##零件-API)&gt; 查找到的零件
+* 返回 &lt;[Block](#零件-API)&gt; 查找到的零件
 ```javascript
 var block = machine.getBlockByGuid('c9f2ffe4-b213-4d29-ac8d-ca1fea51c0c5');
 ```
@@ -163,7 +163,7 @@ var block = machine.getBlockByGuid('c9f2ffe4-b213-4d29-ac8d-ca1fea51c0c5');
 #### getBlocksByClassName(className)
 根据零件的className查找零件，className在每个零件的配置面板都可以填写。
 * className &lt;string&gt; name, 模块的名字, 等价于返回Block的className属性，大小写不敏感。每个零件可能有多个className, 这里只用匹配其中一个即可。
-* 返回 &lt;[Block](##零件-API)[]&gt; 查找到的零件
+* 返回 &lt;[Block](#零件-API)[]&gt; 查找到的零件
 ```javascript
 var forwardBlocks = machine.getBlocksByName('forward-group');
 var backwardBlocks = machine.getBlocksByName('backward-group');
