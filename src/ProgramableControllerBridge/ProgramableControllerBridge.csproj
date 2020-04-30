@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E971087E-BA83-44C7-86B4-572DB68586AA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProgramableControllerBridge</RootNamespace>
+    <AssemblyName>ProgramableControllerBridge</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CpuBridgeImpl.cs" />
+    <Compile Include="JsRuntime\Component\JsMessage.cs" />
+    <Compile Include="JsRuntime\Component\JsStorage.cs" />
+    <Compile Include="JsRuntime\Wrappers\BlockWrapper.cs" />
+    <Compile Include="JsRuntime\Wrappers\BlockWrappers_Activable.cs" />
+    <Compile Include="JsRuntime\Wrappers\BlockWrappers_Others.cs" />
+    <Compile Include="JsRuntime\Wrappers\BlockWrappers_WithJoint.cs" />
+    <Compile Include="JsRuntime\Wrappers\SensorColliderWrapper.cs" />
+    <Compile Include="JsRuntime\Wrappers\MapperTypeWrapper.cs" />
+    <Compile Include="JsRuntime\Wrappers\MapperTypeWrappers.cs" />
+    <Compile Include="JsRuntime\Wrappers\BlockWrappers_SensorBlockWrapper.cs" />
+    <Compile Include="JsRuntime\Core\TypePair.cs" />
+    <Compile Include="JsRuntime\Wrappers\VectorWrapper.cs" />
+    <Compile Include="JsRuntime\Core\ObjectConverterAdapter.cs" />
+    <Compile Include="JsRuntime\Core\TypeUtils.cs" />
+    <Compile Include="JsRuntime\Component\JsMachine_KeyEvents.cs" />
+    <Compile Include="JsRuntime\Component\JsComponent.cs" />
+    <Compile Include="JsRuntime\Component\JsMachine.cs" />
+    <Compile Include="ModBridgeImpl.cs" />
+    <Compile Include="JsRuntime\Core\EngineEx.cs" />
+    <Compile Include="JsRuntime\Component\JsConsole.cs" />
+    <Compile Include="JsRuntime\Component\JsProcess.cs" />
+    <Compile Include="JsRuntime\Component\JsScheduler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JintUnity\JintUnity.csproj">
+      <Project>{45364b6c-5864-4a4d-bf8d-a9a92de50e4f}</Project>
+      <Name>JintUnity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProgramableController\ProgramableController.csproj">
+      <Project>{7392ee4a-5413-489d-8721-363bf6999449}</Project>
+      <Name>ProgramableController</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(ProjectDir)$(OutDir)ProgramableControllerBridge.*" "$(SolutionDir)..\ProgramableController\"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

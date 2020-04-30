@@ -1,0 +1,7 @@
+Debug/
+Release/
+.vs/
+lib/
+packages/
+x64/
+ProgramableControllerTest/
